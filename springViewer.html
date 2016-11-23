@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+
+<link rel="stylesheet" type="text/css" href="scripts/forceLayout_style.css">
+<link rel="stylesheet" type="text/css" href="scripts/selection_style.css">
+<link rel="stylesheet" type="text/css" href="scripts/colorbar_style.css">
+<link rel="stylesheet" type="text/css" href="scripts/settings_style.css">
+<link rel="stylesheet" type="text/css" href="scripts/coexpression_style.css">
+<link rel="stylesheet" type="text/css" href="scripts/diffex_style.css">
+
+<div id="options_bar">
+	<div id="button_panel">
+		<div id="help"> 
+			<button>HELP!</button> 
+		</div>
+		<div id="deselect"> 
+			<button>(De)select All</button> 
+		</div>	
+		<div id="settings"> 
+			<button>Settings:</button> 
+		</div>
+		<div id="save_coords"> 
+			<button> Save coordinates </button> 
+		</div>
+		<div class="dropdown">
+		<div id="layout_tools">
+			<button id="layout_dropdown_button">Layout tools:</button> 
+			<div id="layout_dropdown" class="dropdown-content">
+				<a href="javascript:fix()">Fix nodes</a>
+				<a href="javascript:unfix()">Unfix nodes</a>
+				<a href="javascript:rotation_update()">Rotate</a>
+			</div>
+		</div>
+
+		</div>
+		<div id="center_view"> 
+			<button> Center view </button> 
+		</div>
+		<div class="dropdown">
+		  <button id="download_dropdown_button">Download:</button>
+		  <div id="download_dropdown" class="dropdown-content">
+		  	<a href="javascript:downloadCoordinates()">Coordinates</a>
+			<a href="javascript:downloadSelection()">Selected cells</a>
+			<a href="javascript:downloadRankedTerms()">Enriched terms</a>
+			<a href="javascript:downloadPNG()">Screenshot (.png)</a>
+			<a href="javascript:downloadSVG()">Screenshot (.svg)</a>
+		  </div>
+		</div>
+		<div id="sound_toggle"> </div>
+	</div>
+	<div id="color_chooser"> </div>
+</div>
+<div id="container">
+	<div id="force_layout"> </div>
+	<div id="termsheet" class="sidebar">
+		<div class="column" id="termcolumn"> </div>
+		<div class="column" id="scorecolumn" > </div>
+	</div>
+
+	<div id="legend" class="sidebar">
+		<div class="column" id="count_column"> </div>
+		<div class="column" id="label_column"> </div>
+	</div>
+<!-- 
+		<div id="coexpression_panel" class="sidebar">
+		<div id="coexpression_header"> </div>
+		<div id="coexpression_legend" ></div>
+		<div id="coexpression_infobox"> </div>
+		<div id="coexpression_settings_box"> 
+			<div > <input type="range" min="5" value="60" max="120" id="coexpression_size_slider"> <p>Point size</p> </div>
+			<div> <input type="range" min="0" value="5" max="20" id="coexpression_jitter_slider"> <p>Jitter</p> </div>
+			<div> <input type="range" min="0" value="0" max="100" id="coexpression_zoom_slider"> <p>Zoom</p> </div>
+		</div>
+	</div>
+	<div id="diffex_panel" class="sidebar">
+		<div id="diffex_header"> </div>
+		<div id="diffex_legend_upper" class="diffex_legend"></div>
+		<div id="diffex_legend_lower" class="diffex_legend"></div>
+		<div id="diffex_infobox"> </div>
+		<div id="diffex_settings_box"> 
+			<div> <input type="range" min="5" value="60" max="120" id="diffex_size_slider"> <p>Point size</p> </div>
+			<div> <input type="range" min="0" value="0" max="20" id="diffex_jitter_slider"> <p>Jitter</p> </div>
+			<div> <input type="range" min="0" value="20" max="1600" id="diffex_zoom_slider"> <p>Zoom</p> </div>
+		</div>
+	</div>
+ -->
+</div>
+
+<script src="scripts/d3.min.js"></script>
+<script src="scripts/jquery-3.1.0.min.js"></script>
+<script src="scripts/colorBar.js"></script>
+<script src="scripts/forceLayout_script.js"></script>
+<script src="scripts/rotation_script.js"></script>
+<script src="scripts/selection_script.js"></script>
+<script src="scripts/settings_script.js"></script>
+<script src="scripts/coexpression_script.js"></script>
+<script src="scripts/diffex_script.js"></script>
+<script src="scripts/simg.js"></script>
+<script src="scripts/jspdf.min.js" ></script>
+<script src="scripts/canvg.min.js"></script>
+<script src="scripts/FileSaver.js"></script>
+<script src="scripts/spin.min.js"></script>
+<script>
+
+var rotator_radius = null;
+
+setup_download_dropdown();
+d3.select("#sound_toggle").append('img')
+	.attr('src', "scripts/sound_effects/icon_mute.svg")
+	.on("click", function() {
+		if (d3.select("#sound_toggle").select("img").attr("src") == "scripts/sound_effects/icon_speaker.svg") {
+			d3.select("#sound_toggle").select("img").attr("src","scripts/sound_effects/icon_mute.svg"); }
+		else { d3.select("#sound_toggle").select("img").attr("src","scripts/sound_effects/icon_speaker.svg"); } });
+
+
+	
+function callback() {
+	settings_setup();
+	selection_setup();
+	setup_layout_dropdown();
+	colorBar(graph_directory);
+	loadSelectedCells(graph_directory);
+	//coexpression_setup(graph_directory);
+	//diffex_setup(graph_directory);
+	initiateButtons();
+	
+	window.onclick = function(event) {
+		if (!(event.target.matches('#settings_dropdown *'))) { collapse_settings(); }
+		if (!event.target.matches('#download_dropdown_button')) { closeDropdown(); }
+		if (!event.target.matches('#layout_dropdown_button')) { closeDropdown(); }
+	}
+
+}
+
+var name = window.location.search;
+graph_directory = name.slice(1,name.length);
+d3.select("#force_layout").select("svg").remove()
+d3.select("#color_chooser").selectAll("div").remove()
+d3.select("#color_chooser").selectAll("input").remove()
+d3.select("#color_chooser").selectAll("select").remove()
+forceLayout(graph_directory, callback);
+
+
+
+
+</script>
+
+
+</body>
+
