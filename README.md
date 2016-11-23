@@ -80,6 +80,7 @@ The SPRING project directory must contain files with stereotyped names and forma
  
 1. `gene_colors/color_data_all_genes-*.csv`
 In a directory called `gene_colors` there must be (at most 50) base-0 numbered files called `color_data_all_genes-*.csv.` e.g.
+ 
             color_data_all_genes-0.csv
             color_data_all_genes-1.csv
             color_data_all_genes-2.csv
