@@ -4,4 +4,4 @@ SPRING is a tool for exploring topological relationships in single-cell sequenci
 
 However, heavy users are encouraged to create a local installation of SPRING by following these steps:
 
-
+1. Clone the SPRING repo from github. In the terminal enter ''' blah blah '''
