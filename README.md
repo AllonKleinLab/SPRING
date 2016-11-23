@@ -78,3 +78,5 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
 
 The SPRING project directory must contain files with stereotyped names and formats. Python funtions are provided to create these files (see "Python helper functions documentation" below). We also provide matlab code to write these files (see "Matlab helper functions documentation" below). Here is a guide to the file names and formats:
  
+ 
+ #### Create your own project ####
