@@ -2,18 +2,20 @@
 
 SPRING is a tool for exploring topological relationships in single-cell sequencing data that relies on interactive visualization of a force-directed graph. In the SPRING graph, each node is a cell and each edge is an instance of proximity in gene expression space. Users can upload their own expression data to SPRING using our webserver https://kleintools.hms.harvard.edu/tools/spring.html. However, heavy users are encouraged to create a local installation of SPRING (see below). 
 
-## Installing SPRING locally ##
+### Quick start ###
+
+### Installing SPRING locally ###
 
 1. Install git
 2. Clone the SPRING repo from github. In the terminal enter `git clone git@github.com:AllonKleinLab/SPRING.git`
 
-## Quick start: viewing data ##
+### Viewing projects ###
 
 1. Go to the SPRING directory by entering `cd SPRING`
 2. Start a local server by entering `python -m SimpleHTTPServer 8000 &`
 3. In a web browser (preferably Chrome) go to <a href="http://localhost:8000/springViewer.html?datasets/centroids">http://localhost:8000/springViewer.html?datasets/centroids</a>.
 
-## Quick start: loading your own data ##
+### Making your own project ###
 
 _To load your own data, use the `helper_functions.py` module. Detailed documentation for each helper function is given below. You can get started testing these functions on example input data by:_
 
