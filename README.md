@@ -7,7 +7,8 @@ SPRING is a tool for exploring topological relationships in single-cell sequenci
 #### Installing SPRING locally ####
 
 1. Install git
-2. Clone the SPRING repo from github. In the terminal enter `git clone git@github.com:AllonKleinLab/SPRING.git`
+2. Download the SPRING repo: go to the green "Clone or download" button on this page
+2. Alternatively: In the terminal enter `git clone https://git@github.com/AllonKleinLab/SPRING.git`
 
 #### Viewing projects ####
 
