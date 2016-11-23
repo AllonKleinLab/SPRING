@@ -4,11 +4,11 @@ SPRING is a tool for exploring topological relationships in single-cell sequenci
 
 However, heavy users are encouraged to create a local installation of SPRING by following these steps:
 
-0. Install git
-1. Clone the SPRING repo from github. In the terminal enter `git clone git@github.com:AllonKleinLab/SPRING.git`
+1. Install git
+2. Clone the SPRING repo from github. In the terminal enter `git clone git@github.com:AllonKleinLab/SPRING.git`
 
-To run SPRING locally
+SPRING is now installed. Next, load a test dataset by:
 
-2. Go to the SPRING directory by entering `cd SPRING`
-3. Start a local server by entering `python -m SimpleHTTPServer 8000 &`
-4. In a web browser (preferably Chrome) go to <a href="http://localhost:8000/springViewer.html?datasets/centroids">http://localhost:8000/springViewer.html?datasets/centroids</a>.
+3. Go to the SPRING directory by entering `cd SPRING`
+4. Start a local server by entering `python -m SimpleHTTPServer 8000 &`
+5. In a web browser (preferably Chrome) go to <a href="http://localhost:8000/springViewer.html?datasets/centroids">http://localhost:8000/springViewer.html?datasets/centroids</a>.
