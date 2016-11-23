@@ -9,13 +9,13 @@ SPRING is a tool for exploring topological relationships in single-cell sequenci
 1. Install git
 2. Clone the SPRING repo from github. In the terminal enter `git clone git@github.com:AllonKleinLab/SPRING.git`
 
-### Viewing projects ###
+#### Viewing projects ####
 
 1. Go to the SPRING directory by entering `cd SPRING`
 2. Start a local server by entering `python -m SimpleHTTPServer 8000 &`
 3. In a web browser (preferably Chrome) go to <a href="http://localhost:8000/springViewer.html?datasets/centroids">http://localhost:8000/springViewer.html?datasets/centroids</a>.
 
-### Making your own project ###
+#### Making your own project ####
 
 _To load your own data, use the `helper_functions.py` module. Detailed documentation for each helper function is given below. You can get started testing these functions on example input data by:_
 
