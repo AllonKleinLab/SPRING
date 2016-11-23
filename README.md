@@ -74,3 +74,7 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
 2. Start a local server by entering  `python -m SimpleHTTPServer 8000 &`
 3. Go to the following URL, which must be modified with the name of your project <a href="">http://localhost:8000/springViewer.html?PATH_TO_YOUR_PROJECT_DIRECTORY</a>.
        
+#### Create your own project ####       
+
+The SPRING project directory must contain files with stereotyped names and formats. Python funtions are provided to create these files (see "Python helper functions documentation" below). We also provide matlab code to write these files (see "Matlab helper functions documentation" below). Here is a guide to the file names and formats:
+
