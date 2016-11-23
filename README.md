@@ -58,3 +58,4 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
             print 'Saving SPRING plot'
             save_spring_dir(E,D,5,gene_list,'datasets/frog', cell_groupings=cell_groupings)
 
+3. In a web browser, go to <a href="http://localhost:8000/springViewer.html?datasets/frog">http://localhost:8000/springViewer.html?datasets/frog</a>.
