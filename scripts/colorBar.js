@@ -203,19 +203,30 @@ function colorBar(project_directory) {
 	function addChunk(j,dict) {
 		var NN = 50;
 		if (j < NN) {
-			var message = "Loading "+j.toString()+"/50";
-			greenMenu.append("option").text(message);
-			greenMenu.property("value",message);
-			d3.text(project_directory+"/gene_colors/color_data_all_genes-"+j.toString()+".csv", function(text) {
-				dict = read_csv(text);
-				for (var attrname in dict) { 
-					if (attrname != "") { 
-						all_gene_color_array[attrname] = dict[attrname]; 
-					}
+			var fname = project_directory+"/gene_colors/color_data_all_genes-"+j.toString()+".csv";
+			$.ajax({
+				url:fname,
+				type:'HEAD',
+				error: function() {
+					addChunk(j+1,dict);
+				},
+				success: function() {
+					var message = "Loading "+j.toString()+"/50";
+					greenMenu.append("option").text(message);
+					greenMenu.property("value",message);
+					d3.text(fname, function(text) {
+						dict = read_csv(text);
+						for (var attrname in dict) { 
+							if (attrname != "") { 
+								all_gene_color_array[attrname] = dict[attrname]; 
+							}
+						}
+						addChunk(j+1,dict);
+					});
 				}
-				addChunk(j+1,dict);
 			});
-		}	
+		}
+			
 		if (j == NN) {
 			greenMenu.selectAll("option").remove();
 			dispatch.load(all_gene_color_array,"all_genes");
@@ -708,7 +719,6 @@ function colorBar(project_directory) {
 	}
 	
 	function show_slider_select() {
-		slider_select_update();
 		d3.select("#slider_select_button")
 			.style("fill-opacity",0.7)
 			.style("stroke","yellow");	
@@ -716,6 +726,7 @@ function colorBar(project_directory) {
 		d3.select("#right_bracket").style("visibility","visible")
 		d3.select("#floor_bracket").style("visibility","visible")
 		d3.select("#ceiling_bracket").style("visibility","visible")	
+		slider_select_update();
 	}
 	
 	function hide_slider_select() {
@@ -751,7 +762,6 @@ function colorBar(project_directory) {
 	}
 	
 	function slider_select_update() {
-		console.log('npw')
 		var color_array = null;
 		if (document.getElementById('gradient_button').checked) {
 			var current_selection = document.getElementById('gradient_menu').value
@@ -777,9 +787,6 @@ function colorBar(project_directory) {
 	}
 
 	function update_slider() {
-		if (left_bracket.style("visibility") == "visible") {
-			slider_select_update();
-		}
 		d3.select("#label_column").selectAll("div").remove();
 		d3.select("#count_column").selectAll("div").remove();
 		if (document.getElementById('labels_button').checked) {
@@ -839,6 +846,10 @@ function colorBar(project_directory) {
 			}
 		}	
 		setNodeColors();
+		if (left_bracket.style("visibility") == "visible") {
+			slider_select_update();
+		}
+
 	}
 	
 	
@@ -852,6 +863,7 @@ function colorBar(project_directory) {
 	function make_legend(name) {
 		var cat_color_map = categorical_coloring_data[name]['label_colors'];
 		var cat_label_list = categorical_coloring_data[name]['label_list'];
+
 		
 		d3.select("#count_column").selectAll("div")
 			.data(Object.keys(cat_color_map)).enter().append("div")
