@@ -78,7 +78,7 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
 
 The SPRING project directory must contain files with stereotyped names and formats. Python funtions are provided to create these files (see "Python helper functions documentation" below). We also provide matlab code to write these files (see "Matlab helper functions documentation" below). Here is a guide to the file names and formats:
  
-1. `gene_colors/color_data_all_genes-*.csv` [REQUIRED] \n
+1. `gene_colors/color_data_all_genes-*.csv` [REQUIRED] <br>
 In a directory called `gene_colors` there must be (at most 50) base-0 numbered files called `color_data_all_genes-*.csv.` e.g.
  
             color_data_all_genes-0.csv
