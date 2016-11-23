@@ -64,3 +64,16 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
 
 3. If you haven't already, start a local server by entering `python -m SimpleHTTPServer 8000 &`
 4. In a web browser, go to <a href="http://localhost:8000/springViewer.html?datasets/frog">http://localhost:8000/springViewer.html?datasets/frog</a>.
+
+## User manual ##
+
+#### Running SPRING ####
+
+1. `cd` into a directory containing the following files and folders from this repo:
+       `springViewer.html`
+       `scripts`
+       `stuff`
+       
+
+SPRING is a javascript-based app
+
