@@ -79,14 +79,13 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
 The SPRING project directory must contain files with stereotyped names and formats. Python funtions are provided to create these files (see "Python helper functions documentation" below). We also provide matlab code to write these files (see "Matlab helper functions documentation" below). Here is a guide to the file names and formats:
  
 1. `gene_colors/color_data_all_genes-*.csv`
+In a directory called `gene_colors` there must be (at most 50) base-0 numbered files called `color_data_all_genes-*.csv.` e.g.
 
-            In a directory called `gene_colors` there must be (at most 50) base-0 numbered files called `color_data_all_genes-*.csv.` e.g.
+            color_data_all_genes-0.csv
+            color_data_all_genes-1.csv
+            color_data_all_genes-2.csv
+            ...
+            color_data_all_genes-50.csv
 
-                        color_data_all_genes-0.csv
-                        color_data_all_genes-1.csv
-                        color_data_all_genes-2.csv
-                        ...
-                        color_data_all_genes-50.csv
-
-            Each of these files should contain gene expression for a subset of genes, with one gene on each row. The rows have the following format:
-            `GENE_NAME,cell1_expression,cell2_espression...`. For example, `Sox2,0.3,0.54,0.6... `. So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header, and that there are no extra commas on a line. 
+Each of these files should contain gene expression for a subset of genes, with one gene on each row. The rows have the following format:
+`GENE_NAME,cell1_expression,cell2_espression...`. For example, `Sox2,0.3,0.54,0.6... `. So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header, and that there are no extra commas on a line. 
