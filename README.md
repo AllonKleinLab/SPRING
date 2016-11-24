@@ -76,9 +76,9 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
        
 #### Create your own project   
 
-The SPRING project directory must contain files with stereotyped names and formats. Python funtions are provided to create these files (see "Python helper functions documentation" below). We also provide matlab code to write these files (see "Matlab helper functions documentation" below). Here is a guide to the file names and formats:
+The SPRING project directory must contain files with stereotyped names and formats. Matlab and Python funtions are provided to create these files (see "Helper functions documentation" below). Here is a guide to the file names and formats:
  
-1. **gene_colors/color_data_all_genes-*.csv` [REQUIRED]** <br>
+1. **gene_colors/color_data_all_genes-*.csv [REQUIRED]** <br>
 In a directory called `gene_colors` there must be (at most 50) base-0 numbered files called `color_data_all_genes-*.csv.` e.g.
  
             color_data_all_genes-0.csv
@@ -89,5 +89,5 @@ In a directory called `gene_colors` there must be (at most 50) base-0 numbered f
 Each of these files should contain gene expression for a subset of genes, with one gene on each row. The rows have the following format:
 `GENE_NAME,cell1_expression,cell2_espression...`. For example, `Sox2,0.3,0.54,0.6... `. So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header, and that there are no extra commas on a line. 
 
-2.  **graph_data.json` [REQUIRED]** <br>
+2. **graph_data.json [REQUIRED]** <br>
 
