@@ -91,6 +91,7 @@ Each of these files should contain gene expression for a subset of genes, with o
 
 2. **graph_data.json [REQUIRED]** <br>
 Json file containing the graph data, with the following form (use base-0 numbering):
+ 
             {  "nodes": [ {   "name": cell0, "number": 0 },     // List of nodes
                           {   "name": cell1, "number": 1 },
                           ....
