@@ -91,7 +91,7 @@ def write_color_tracks(ctracks, fname):
 	out = []
 	for name,score in ctracks.items():
 		line = ','.join([name]+[repr(round(x,1)) for x in score])
-		line.replace('.0','.')
+		line.replace('0.','.')
 		out += [line]
 	out = sorted(out,key=lambda x: x.split(',')[0])
 	open(fname,'w').write('\n'.join(out))
@@ -100,7 +100,7 @@ def frac_to_hex(frac):
 	rgb = tuple(np.array(np.array(plt.cm.jet(frac)[:3])*255,dtype=int))
 	return '#%02x%02x%02x' % rgb
 
-def save_spring_dir(E,D,k,gene_list,project_directory, geneset_colors={},cell_groupings={}):
+def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_groupings={}):
 	os.system('mkdir '+project_directory)
 	if not project_directory[-1] == '/': project_directory += '/'
 	# Build graph
@@ -109,8 +109,8 @@ def save_spring_dir(E,D,k,gene_list,project_directory, geneset_colors={},cell_gr
 
 	# save genesets
 	#print 'Saving gene sets'
-	geneset_colors['Uniform'] = np.zeros(E.shape[0])
-	write_color_tracks(geneset_colors, project_directory+'color_data_gene_sets.csv')
+	custom_colors['Uniform'] = np.zeros(E.shape[0])
+	write_color_tracks(custom_colors, project_directory+'color_data_gene_sets.csv')
 	all = []
 	
 	# save gene colortracks
@@ -132,7 +132,7 @@ def save_spring_dir(E,D,k,gene_list,project_directory, geneset_colors={},cell_gr
 		max = np.max(E[:,i])
 		centile = np.percentile(E[:,i],99.6)
 		color_stats[gene_list[i]] = (mean,std,0,max,centile)
-	for k,v in geneset_colors.items():
+	for k,v in custom_colors.items():
 		color_stats[k] = (0,1,np.min(v),np.max(v)+.01,np.percentile(v,99))
 	json.dump(color_stats,open(project_directory+'/color_stats.json','w'),indent=4, sort_keys=True)
 		
