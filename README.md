@@ -90,4 +90,17 @@ Each of these files should contain gene expression for a subset of genes, with o
 `GENE_NAME,cell1_expression,cell2_espression...`. For example, `Sox2,0.3,0.54,0.6... `. So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header, and that there are no extra commas on a line. 
 
 2. **graph_data.json [REQUIRED]** <br>
+Json file containing the graph data, with the following form (use base-0 numbering):
+            {  "nodes": [ {   "name": cell0, "number": 0 },     // List of nodes
+                          {   "name": cell1, "number": 1 },
+                          ....
+                          {   "name": cellN, "number": N }
+               ],
+               "links": [ { "source": 10, "target": 23 },      // List of edges
+                          { "source": 29, "target": 50 },
+                          ....
+                          { "source": 40, "target": 125 }
+               ]
+            }
+
 
