@@ -1,11 +1,14 @@
 # SPRING
 
+#### Table of Contents  
+[Headers](#Quick_start)  
+[Emphasis](#User_manual)  
+
+
 SPRING is a tool for exploring topological relationships in single-cell sequencing data that relies on interactive visualization of a force-directed graph. In the SPRING graph, each node is a cell and each edge is an instance of proximity in gene expression space. Users can upload their own expression data to SPRING using our webserver https://kleintools.hms.harvard.edu/tools/spring.html. However, heavy users are encouraged to create a local installation of SPRING (see below). 
 
-##### Table of Contents  
-[Headers](##Quick start)  
-[Emphasis](##User manual)  
 
+<a name="Quick_start"/>
 ## Quick start ##
 
 #### Installing SPRING locally ####
@@ -69,6 +72,7 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
 3. If you haven't already, start a local server by entering `python -m SimpleHTTPServer 8000 &`
 4. In a web browser, go to <a href="http://localhost:8000/springViewer.html?datasets/frog">http://localhost:8000/springViewer.html?datasets/frog</a>.
 
+<a name="User_manual"/>
 ## User manual ##
 
 #### Run SPRING: General instructions ####
