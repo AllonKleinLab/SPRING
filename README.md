@@ -95,13 +95,11 @@ Json file containing the graph data, with the following form (use base-0 numberi
             {  "nodes": [ {   "name": cell0, "number": 0 },     // List of nodes
                           {   "name": cell1, "number": 1 },
                           ....
-                          {   "name": cellN, "number": N }
-               ],
+                          {   "name": cellN, "number": N } ],
                "links": [ { "source": 10, "target": 23 },      // List of edges
                           { "source": 29, "target": 50 },
                           ....
-                          { "source": 40, "target": 125 }
-               ]
+                          { "source": 40, "target": 125 }  ]
             }
 
 
