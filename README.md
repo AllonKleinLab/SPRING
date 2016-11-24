@@ -90,7 +90,7 @@ Each of these files should contain gene expression for a subset of genes, with o
 `GENE_NAME,cell1_expression,cell2_espression...`. For example, `Sox2,0.3,0.54,0.6... `. So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header, and that there are no extra commas on a line. 
 
 2. **graph_data.json [REQUIRED]** <br>
-Json file containing the graph data, with the following form (use base-0 numbering):
+Json file containing the graph data, with the following form (use base-0 numbering; any json compatibl format is OK):
  
             {  "nodes": [ {   "name": cell0, "number": 0 },     // List of nodes
                           {   "name": cell1, "number": 1 },
@@ -99,7 +99,19 @@ Json file containing the graph data, with the following form (use base-0 numberi
                "links": [ { "source": 10, "target": 23 },      // List of edges
                           { "source": 29, "target": 50 },
                           ....
-                          { "source": 40, "target": 125 }  ]
-            }
+                          { "source": 40, "target": 125 }  ] }
 
+3. **color_stats.json [REQUIRED]** <br>'
+Json file containing pre-calculated summary statistics of the various coloring tracks, including those in `color_data_gene_sets.csv` (see below) and `color_data_all_genes-*.csv`. The file should contain a dictionary mapping each color track-name to a list  [MEAN, STANDARD DEVIATION, MIN, MAX, 99-PERCENTILE] with summary statistics for that color track. Thus, this file could have the form:
+
+            {  "Sox2":  [ 0.1, 0.2, 0, 1.46, 1.22],
+               "Brca":  [ 5.2, 4.1, 0, 20.3, 18.1],
+               ...
+               "Gata1": [ 0.4, 0.3, 0, 5.42, 4.11]  }
+
+4. **categorical_coloring_data.json [OPTIONAL]** <br>' 
+Blah
+
+5. **color_data_gene_sets.csv [OPTIONAL]** <br>' 
+Blah
 
