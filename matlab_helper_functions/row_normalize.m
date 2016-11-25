@@ -1,5 +1,9 @@
-
 function Enormalized = row_normalize(E)
+% Row normalize the expression matrix
+%
+% E           = Expression matrix (rows are cells, columns are genes)
+% Enormalized = Row normalized expression matrix
+%%
 	total_counts = sum(E,2);
 	tc_tiled = repmat(total_counts,1,size(E,2))
 	included = all(E < tc_tiled * 0.05, 1)	

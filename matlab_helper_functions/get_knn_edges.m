@@ -1,5 +1,11 @@
 function edges = get_knn_edges(dmat, k)
-	edges = [];
+% Get k-nearest-neighbor graph edges from a distance matrix
+%
+% dmat     = Distance matrix. Entry i,j is the distance between nodes i and j
+% k        = Number of edges assigned to each node
+%
+%%
+    edges = [];
     for i = 1:size(dmat,1)
     	[dSorted dIdx] = sort(dmat(i,:));
         for j = dIdx(1:k)
