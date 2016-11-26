@@ -18,5 +18,5 @@ function write_graph(n_nodes, edges, project_directory)
     end
 	out = struct('nodes',out_nodes,'links',out_edges);
     project_directory = strcat(project_directory,'/graph_data.json');
-	json.write(out,project_directory;
+	json.write(out,project_directory);
 end

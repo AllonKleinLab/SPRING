@@ -193,6 +193,13 @@ function colorBar(project_directory) {
 	// open json file containing gene sets and populate drop down menu
 	d3.json(project_directory+"/categorical_coloring_data.json", function(data) {
 		categorical_coloring_data = data;
+		Object.keys(categorical_coloring_data).forEach(function(d) {
+			new_labels = [];
+			categorical_coloring_data[d]['label_list'].forEach(function(dd) {
+				new_labels.push(dd.trim());
+			});
+			categorical_coloring_data[d]['label_list'] = new_labels;
+		});
 		dispatch.load(categorical_coloring_data,"cell_labels");	
 		update_slider();
 	});
@@ -808,6 +815,8 @@ function colorBar(project_directory) {
 				d3.selectAll("#gradient_bar").attr("fill","url(#green_gradient)")
 				d3.selectAll("#handle").style("fill",d3.rgb(0,255,0));	
 			}	
+			console.log(color_stats);
+			console.log(name);
 			var max = color_stats[name][3];
 			slider_scale.domain([0, max]);
 			set_slider_position(slider_scale(color_stats[name][4]));

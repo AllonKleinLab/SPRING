@@ -33,12 +33,12 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
             import pickle, numpy as np
 
             # Import SPRING helper functions
-            from helper_functions import *
+            from python_helper_functions import *
 
             # Import expression matrix; rows are cells and columns are genes
             ### ****** Make sure E.npy is unzipped *************
             print 'Loading expression matrix'
-            E = np.load('example_inputs/E.npy')
+            E = np.load('example_inputs/python_E.npy')
 
             # Filter out cells with fewer than 1000 UMIs
             print 'Filtering cells'
@@ -64,7 +64,7 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
             # gene_list is a list of genes with length E.shape[1]
             # cell_groupings is a dict of the form: { <grouping_name> : [<cell1_label>, <cell2_label>,...] }
             # a "grouping" could be the sample id, cluster label, or any other categorical variable
-            gene_list, cell_groupings = pickle.load(open('example_inputs/additional_data.p'))
+            gene_list, cell_groupings = pickle.load(open('example_inputs/python_data.p'))
 
             # save a SPRING plots with k=5 edges per node in the directory "datasets/frog/"
             print 'Saving SPRING plot'
