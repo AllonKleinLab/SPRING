@@ -2,10 +2,10 @@
 
 #### Table of Contents  
 [SPRING Overview](#Overview)   
-[here](#Quick_Start)
-[Pre-processing your data](#Preprocessing) 
-[Visualizing your data](#Visualizing) 
-[SPRING visualization file structures](#File_structures) 
+[Quick Start](#Quick_Start)   
+[Pre-processing your data](#Preprocessing)   
+[Visualizing your data](#Visualizing)   
+[SPRING visualization file structures](#File_structures)   
 
 
 <a name="Overview"/>
