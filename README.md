@@ -96,6 +96,22 @@ _To load your own data into SPRING, they must saved to a project directory with 
 4. In a web browser, go to <a href="http://localhost:8000/springViewer.html?datasets/frog">http://localhost:8000/springViewer.html?datasets/frog</a>.
 
 
+
+
+SPRING pre-processing scripts and input file structures
+Although simple in concept, generating a kNN graph of single cell (or other) data involves several choices. The provided subroutines provide several parameters and options for normalization, gene filtering, mesoscale dimensionality reduction, and graph construction. The routines also allow generating composite gene scores for plotting.
+
+Input data files:
+
+Scripts and parameters:
+
+
+SPRING visualization
+<Instructions for launching the web interface given output of the pre-processing routines>
+
+
+SPRING visualization file structures
+
 ## User manual ##
 
 #### Run SPRING: General instructions ####
@@ -107,7 +123,7 @@ _To load your own data into SPRING, they must saved to a project directory with 
        
 #### Create your own project   
 
-The SPRING project directory must contain files with stereotyped names and formats. Matlab and Python funtions are provided to create these files (see "Helper functions documentation" below). Here is a guide to the file names and formats:
+The SPRING project directory must contain files with stereotyped names and formats. Matlab and Python functions are provided to create these files (see "Helper functions documentation" below). Here is a guide to the file names and formats:
  
 1. **gene_colors/color_data_all_genes-*.csv [REQUIRED]** <br>
 In a directory called `gene_colors` there must be (at most 50) base-0 numbered files called `color_data_all_genes-*.csv.` e.g.
