@@ -2,7 +2,7 @@
 
 #### Table of Contents  
 [SPRING Overview](#Overview)   
-[Quick Startt](#Quick_Start)   
+[Quick Start](#Quick_Start1)   
 [Pre-processing your data](#Preprocessing)   
 [Visualizing your data](#Visualizing)   
 [SPRING visualization file structures](#File_structures)   
@@ -11,7 +11,7 @@
 <a name="Overview"/>
 ## Overview ##
 
-SPRING is a collection of pre-processing scripts and a web browser-based tool for visualizing and interacting with high dimensional data. SPRING was developed for single cell RNA-Seq data but can be applied more generally. The minimal input is a matrix of high dimensional data points (cells) and a list of dimension names (genes). Casual users are encouraged to access our user-friendly <a href="https://kleintools.hms.harvard.edu/tools/spring.html">webserver</a>. View an example dataset <a href=https://kleintools.hms.harvard.edu/tools/springViewer.html?cgi-bin/client_datasets/centroids>here</a>. A full pyton example showing shwoing how to process your own data and boot up a local server is provided in the [Quick Start](#Quick_Start) section. 
+SPRING is a collection of pre-processing scripts and a web browser-based tool for visualizing and interacting with high dimensional data. SPRING was developed for single cell RNA-Seq data but can be applied more generally. The minimal input is a matrix of high dimensional data points (cells) and a list of dimension names (genes). Casual users are encouraged to access our user-friendly <a href="https://kleintools.hms.harvard.edu/tools/spring.html">webserver</a>. View an example dataset <a href=https://kleintools.hms.harvard.edu/tools/springViewer.html?cgi-bin/client_datasets/centroids>here</a>. A full pyton example showing shwoing how to process your own data and boot up a local server is provided in the [Quick Start](#Quick_Start2) section. 
 
 SPRING is motivated by the observation that low-dimensional visualizations of high-dimensional data are, in general, imperfect. Rather than attempting to present a single ‘definitive’ view of single cell data, SPRING allows exploring multiple visualizations in order to develop an intuition for data structure. The core of SPRING is to create a k-nearest neighbor (kNN) graph of data points in a mesoscale high-dimensional space (typically tens to hundreds of dimensions), and to then visualize the graph in 2D using a force-directed layout. A web-based interface provides a set of interactive tools to: manipulate (and thus explore) graph layout in real time; to represent any characteristic (e.g. gene expression) as a color map over the graph nodes; and to identify enriched characteristics (genes, terms) on selected graph nodes. Several export options are available to download graph representation and enriched term lists.
 
@@ -24,7 +24,8 @@ We expect most users will begin exploring their data using the provided pre-proc
 
 SPRING is a tool for exploring topological relationships in single-cell sequencing data that relies on interactive visualization of a force-directed graph. In the SPRING graph, each node is a cell and each edge is an instance of proximity in gene expression space. Users can upload their own expression data to SPRING using our webserver https://kleintools.hms.harvard.edu/tools/spring.html. However, heavy users are encouraged to create a local installation of SPRING (see below). 
 
-<a name="Quick_Start"/>
+<a name="Quick_Start1"/>
+<a name="Quick_Start2"/>
 
 #### Installing SPRING locally ####
 
