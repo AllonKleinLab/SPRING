@@ -1,11 +1,12 @@
 # SPRING
 
 #### Table of Contents  
-[SPRING Overview](#Overview)   
+[SPRING Overview](#Overview)  
+[Installation](#Installation)  
 [Quick Start](#Quick_Start1)   
-[Pre-processing your data](#Preprocessing)   
+[Pre-processing your data](#Preprocessing1)   
 [Visualizing your data](#Visualizing)   
-[SPRING visualization file structures](#File_structures)   
+[SPRING visualization file structures](#File_structures1)   
 
 
 <a name="Overview"/>
@@ -13,26 +14,32 @@
 
 SPRING is a collection of pre-processing scripts and a web browser-based tool for visualizing and interacting with high dimensional data. SPRING was developed for single cell RNA-Seq data but can be applied more generally. The minimal input is a matrix of high dimensional data points (cells) and a list of dimension names (genes). Casual users are encouraged to access our user-friendly <a href="https://kleintools.hms.harvard.edu/tools/spring.html">webserver</a>. View an example dataset <a href=https://kleintools.hms.harvard.edu/tools/springViewer.html?cgi-bin/client_datasets/centroids>here</a>. A full pyton example showing shwoing how to process your own data and boot up a local server is provided in the [Quick Start](#Quick_Start2) section. 
 
-SPRING is motivated by the observation that low-dimensional visualizations of high-dimensional data are, in general, imperfect. Rather than attempting to present a single ‘definitive’ view of single cell data, SPRING allows exploring multiple visualizations in order to develop an intuition for data structure. The core of SPRING is to create a k-nearest neighbor (kNN) graph of data points in a mesoscale high-dimensional space (typically tens to hundreds of dimensions), and to then visualize the graph in 2D using a force-directed layout. A web-based interface provides a set of interactive tools to: manipulate (and thus explore) graph layout in real time; to represent any characteristic (e.g. gene expression) as a color map over the graph nodes; and to identify enriched characteristics (genes, terms) on selected graph nodes. Several export options are available to download graph representation and enriched term lists.
+Low-dimensional visualizations of high-dimensional data are usually imperfect. Rather than attempting to present a single ‘definitive’ view of single cell data, SPRING allows exploration of multiple visualizations in order to develop an intuition for data structure. The core of SPRING is to create a k-nearest neighbor (kNN) graph of data points visualize the graph in 2D using a force-directed layout. A web-based interface provides a set of interactive tools to: manipulate (and thus explore) graph layout in real time; to represent any characteristic (e.g. gene expression) as a color map over the graph nodes; and to identify enriched characteristics (genes, terms) on selected graph nodes. Several export options are available to download graph representation and enriched term lists.
 
-The SPRING subroutines can be divided into (a) pre-processing scripts that take raw inputs and convert them into data structures ready for visualization; and (b) visualization subroutines that display the pre-processed data through a web browser. The output of the pre-processing scripts is a project directory, containing a set of files with stereotyped names and formats. The visualization subroutines, implemented in javascript, accept a project directory containing the pre-processed files. We provide pre-processing scripts in both Python and MATLAB, implementing particular choices for data normalization and dimensionality reduction as described below. These scripts can be entirely replaced with user-defined code, e.g. in order to introduce different kNN graph construction schemes. For users wishing to develop their own pre-processing scripts, a detailed specification of the output file formats is described below. 
-
-We expect most users will begin exploring their data using the provided pre-processing scripts. For these users, the following sections provide: an example of pre-processing and visualizing data (section xx); and a user guide for the pre-processing scripts and raw input file formats. Users wishing to write their own pre-processing scripts will refer to the final section below describing the required composition of a “project directory” including stereotyped file structures and file names for SPRING visualization.
+The SPRING subroutines can be divided into (a) pre-processing scripts that take raw inputs and convert them into data structures ready for visualization; and (b) visualization subroutines that display the pre-processed data through a web browser. The output of the pre-processing scripts is a project directory, containing a set of files with stereotyped names and formats. The visualization subroutines, implemented in javascript, accept a project directory containing the pre-processed files. We provide [pre-processing scripts](#Preprocessing2) in both Python and MATLAB. For users wishing to develop their own pre-processing scripts, a [detailed specification](#File_structures2) of the output file formats is described below. 
 
 
 
 
-SPRING is a tool for exploring topological relationships in single-cell sequencing data that relies on interactive visualization of a force-directed graph. In the SPRING graph, each node is a cell and each edge is an instance of proximity in gene expression space. Users can upload their own expression data to SPRING using our webserver https://kleintools.hms.harvard.edu/tools/spring.html. However, heavy users are encouraged to create a local installation of SPRING (see below). 
+<a name="Preprocessing1"/>
+<a name="Preprocessing2"/>
+
+
+<a name="File_structures1"/>
+<a name="File_structures2"/>
+
+<a name="Installation"/>
+## Installing SPRING locally ##
+
+1. Download the SPRING repo: go to the green "Clone or download" button on this page
+2. Alternatively: Install git and in the terminal by entering `git clone https://git@github.com/AllonKleinLab/SPRING.git`
+3. If following option (2) above, you may need to change permissions using `sudo chmod -R a+w SPRING`
 
 <a name="Quick_Start1"/>
 <a name="Quick_Start2"/>
+## Quick Start ##
 
-#### Installing SPRING locally ####
-
-2. Download the SPRING repo: go to the green "Clone or download" button on this page
-2. Alternatively: Install git and in the terminal enter `git clone https://git@github.com/AllonKleinLab/SPRING.git`
-
-#### Explore a processed dataset ####
+#### Explore a pre-processed dataset ####
 
 1. Go to the SPRING directory by entering `cd SPRING`
 2. Start a local server by entering `python -m SimpleHTTPServer 8000 &`
