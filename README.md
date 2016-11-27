@@ -1,12 +1,12 @@
 # SPRING
 
 #### Table of Contents  
-[SPRING Overview](#Overview)  
+[Overview](#Overview)  
 [Installation](#Installation)  
 [Quick Start](#Quick_Start1)   
 [Pre-processing your data](#Preprocessing1)   
 [Visualizing your data](#Visualizing)   
-[SPRING visualization file structures](#File_structures1)   
+[Visualization file structures](#File_structures1)   
 
 
 <a name="Overview"/>
@@ -29,7 +29,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 <a name="File_structures2"/>
 
 <a name="Installation"/>
-## Installing SPRING locally ##
+## Installation ##
 
 1. Download the SPRING repo: go to the green "Clone or download" button on this page
 2. Alternatively: Install git and in the terminal by entering `git clone https://git@github.com/AllonKleinLab/SPRING.git`
@@ -41,21 +41,21 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 
 #### Explore a pre-processed dataset ####
 
-1. Go to the SPRING directory by entering `cd SPRING`
+1. Go into the SPRING directory by entering `cd SPRING`
 2. Start a local server by entering `python -m SimpleHTTPServer 8000 &`
 3. In a web browser (preferably Chrome) go to <a href="http://localhost:8000/springViewer.html?datasets/centroids">http://localhost:8000/springViewer.html?datasets/centroids</a>.
 
 #### Process your own dataset ####
 
-_To load your own data, use the `helper_functions.py` module. Detailed documentation for each helper function is given below. You can get started testing these functions on example input data by:_
+_To load your own data, use the `preprocessing_python.py` module. Detailed documentation for each helper function is given below. You can get started testing these functions on example input data by:_
 
 1. Unzip `example_inputs/E.npy.zip`
-2. In the SPRING directory, run the following pyhon code
+2. In the SPRING directory, run the following pyhon code, which will create and populate the project directory `datasets/frog/`.
 
             import pickle, numpy as np
 
             # Import SPRING helper functions
-            from python_helper_functions import *
+            from preprocesing_python import *
 
             # Import expression matrix; rows are cells and columns are genes
             ### ****** Make sure E.npy is unzipped *************
@@ -95,7 +95,7 @@ _To load your own data, use the `helper_functions.py` module. Detailed documenta
 3. If you haven't already, start a local server by entering `python -m SimpleHTTPServer 8000 &`
 4. In a web browser, go to <a href="http://localhost:8000/springViewer.html?datasets/frog">http://localhost:8000/springViewer.html?datasets/frog</a>.
 
-<a name="User_manual"/>
+
 ## User manual ##
 
 #### Run SPRING: General instructions ####
