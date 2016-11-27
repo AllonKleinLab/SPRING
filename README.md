@@ -89,10 +89,10 @@ _To load your own data into SPRING, they must saved to a project directory with 
 4. In a web browser, go to <a href="http://localhost:8000/springViewer.html?datasets/frog">http://localhost:8000/springViewer.html?datasets/frog</a>.
 
 
-## Pre-processing your data ##
 <a name="Preprocessing1"/>
 <a name="Preprocessing2"/>
 <a name="Preprocessing3"/>
+## Pre-processing your data ##
 
 SPRING pre-processing scripts and input file structures
 Although simple in concept, generating a kNN graph of single cell (or other) data involves several choices. The provided subroutines provide several parameters and options for normalization, gene filtering, mesoscale dimensionality reduction, and graph construction. The routines also allow generating composite gene scores for plotting.
