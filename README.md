@@ -6,7 +6,7 @@
 [Quick Start](#Quick_Start1)   
 [Pre-processing your data](#Preprocessing1)   
 [Visualizing your data](#Visualizing)   
-[Visualization file structures](#File_structures1)   
+[SPRING file structures](#File_structures1)   
 
 
 <a name="Overview"/>
@@ -20,13 +20,6 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 
 
 
-
-<a name="Preprocessing1"/>
-<a name="Preprocessing2"/>
-
-
-<a name="File_structures1"/>
-<a name="File_structures2"/>
 
 <a name="Installation"/>
 ## Installation ##
@@ -96,7 +89,10 @@ _To load your own data into SPRING, they must saved to a project directory with 
 4. In a web browser, go to <a href="http://localhost:8000/springViewer.html?datasets/frog">http://localhost:8000/springViewer.html?datasets/frog</a>.
 
 
-
+## Pre-processing your data ##
+<a name="Preprocessing1"/>
+<a name="Preprocessing2"/>
+<a name="Preprocessing3"/>
 
 SPRING pre-processing scripts and input file structures
 Although simple in concept, generating a kNN graph of single cell (or other) data involves several choices. The provided subroutines provide several parameters and options for normalization, gene filtering, mesoscale dimensionality reduction, and graph construction. The routines also allow generating composite gene scores for plotting.
@@ -107,23 +103,24 @@ Scripts and parameters:
 
 
 SPRING visualization
-<Instructions for launching the web interface given output of the pre-processing routines>
+Instructions for launching the web interface given output of the pre-processing routines
 
 
-SPRING visualization file structures
+<a name="Visualizing"/>
+## Visualizing your data ##
 
-## User manual ##
-
-#### Run SPRING: General instructions ####
-
-1. Download the SPRING repo and `cd` into it (see "Installing SPRING locally" above)
-2. Create a project directory and populate with your own data files (see "Create your own project" below)
+1. Open a terminal to the SPRING directory. Create a project directory for your data if you have not done so. 
 2. Start a local server by entering  `python -m SimpleHTTPServer 8000 &`
 3. Go to the following URL, which must be modified with the name of your project <a href="">http://localhost:8000/springViewer.html?PATH_TO_YOUR_PROJECT_DIRECTORY</a>.
        
-#### Create your own project   
 
-The SPRING project directory must contain files with stereotyped names and formats. Matlab and Python functions are provided to create these files (see "Helper functions documentation" below). Here is a guide to the file names and formats:
+
+
+<a name="File_structures1"/>
+<a name="File_structures2"/>
+## SPRING file structures ##
+
+The SPRING project directory must contain files with stereotyped names and formats. Matlab and Python [scripts](#Preprocessing3) are provided to create these files. Here is a guide to the file names and formats:
  
 1. **gene_colors/color_data_all_genes-*.csv [REQUIRED]** <br>
 In a directory called `gene_colors` there must be (at most 50) base-0 numbered files called `color_data_all_genes-*.csv.` e.g.
