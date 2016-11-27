@@ -1,8 +1,7 @@
 # SPRING
 
 #### Table of Contents  
-[SPRING Overview](#Overview)  
-[Quick Start](#Quick_Start)  
+[SPRING Overview](#Overview)   
 [Pre-processing your data](#Preprocessing) 
 [Visualizing your data](#Visualizing) 
 [SPRING visualization file structures](#File_structures) 
