@@ -131,10 +131,10 @@ In a directory called `gene_colors` there must be (at most 50) base-0 numbered f
             ...
             color_data_all_genes-50.csv
 Each of these files should contain gene expression for a subset of genes, with one gene on each row. The rows have the following format:
-`GENE_NAME,cell1_expression,cell2_espression...`. For example, `Sox2,0.3,0.54,0.6... `. So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header, and that there are no extra commas on a line. 
+`GENE_NAME,cell1_expression,cell2_espression...`. For example, `Sox2,0.3,0.54,0.6... `. So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header. 
 
 2. **graph_data.json [REQUIRED]** <br>
-Json file containing the graph data, with the following form (use base-0 numbering; any json compatibl format is OK):
+Json file containing the graph data, with the following form (use base-0 numbering; any json compatible format is OK):
  
             {  "nodes": [ {   "name": cell0, "number": 0 },     // List of nodes
                           {   "name": cell1, "number": 1 },
@@ -154,7 +154,18 @@ Json file containing pre-calculated summary statistics of the various coloring t
                "Gata1": [ 0.4, 0.3, 0, 5.42, 4.11]  }
 
 4. **categorical_coloring_data.json [OPTIONAL]** <br>' 
-Blah
+Json file containing cell groupings, i.e. categorical variables such as sample ID, cluster label, etc. For each cell grouping, a color map and label list must be provided, as follows.
+
+            { "SampleID":  {  "label_list": [  "Sample1", "Sample2", "Sample2", ... "Sample1"  ], 
+                              "label_colors": { "Sample1": "#00007f", 
+                                                "Sample2": "#00007f" }  },
+
+              "ClusterID": {  "label_list": [  "Cluster1", "Cluster3", ... "Cluster2"  ], 
+                              "label_colors": { "Cluster1": "#00007f", 
+                                                "Cluster2": "#00007f",
+                                                "Cluster3": "#00007f"}  }  }                                   
+The "label_list" array should contain one string for each cell. The "label_colors" map should have one name-color pair for each distinct cell label in "label_list".                               
+
 
 5. **color_data_gene_sets.csv [OPTIONAL]** <br>' 
 Blah
