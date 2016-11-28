@@ -92,23 +92,17 @@ _To load your own data into SPRING, they must saved to a project directory with 
 <a name="Preprocessing1"/>
 <a name="Preprocessing2"/>
 <a name="Preprocessing3"/>
+<a name="Preprocessing4"/>
 ## Pre-processing your data ##
 
-SPRING pre-processing scripts and input file structures
-Although simple in concept, generating a kNN graph of single cell (or other) data involves several choices. The provided subroutines provide several parameters and options for normalization, gene filtering, mesoscale dimensionality reduction, and graph construction. The routines also allow generating composite gene scores for plotting.
+We provide pre-processing scripts in python and MATLAB that help process basic inputs into the [special files](#File_structures3) that are read by SPRING. The main function, `save_spring_dir` actually writes the project directory, taking an expression matrix and pairwaise distance matrix as inputs. The remaining functions implement basic filtering and normaization routines to produce the distance matrix. 
 
-Input data files:
-
-Scripts and parameters:
-
-
-SPRING visualization
-Instructions for launching the web interface given output of the pre-processing routines
+### Python functions ###
 
 
 <a name="Visualizing"/>
 ## Visualizing your data ##
-0. At this point, it is assumed that you have already created a project directory using the pre-processing scripts. 
+0. At this point, it is assumed that you have already created a project directory using the pre-processing [scripts](#Preprocessing4). 
 1. Open a terminal to the SPRING directory. 
 2. Start a local server by entering  `python -m SimpleHTTPServer 8000 &`
 3. Go to the following URL, which must be modified with the name of your project <a href="">http://localhost:8000/springViewer.html?PATH_TO_YOUR_PROJECT_DIRECTORY</a>.
@@ -118,6 +112,7 @@ Instructions for launching the web interface given output of the pre-processing 
 
 <a name="File_structures1"/>
 <a name="File_structures2"/>
+<a name="File_structures3"/>
 ## SPRING file structures ##
 
 The SPRING project directory must contain files with stereotyped names and formats. Matlab and Python [scripts](#Preprocessing3) are provided to create these files. Here is a guide to the file names and formats:
