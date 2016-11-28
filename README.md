@@ -153,7 +153,7 @@ The following code snippet will begin with basic MATLAB data structures and use 
             disp('Saving SPRING plot');
             save_spring_dir(E,D,5,gene_list,'../datasets/frog_matlab', 'cell_groupings',cell_groupings,'custom_colors',custom_colors);
 
-After running this code, start a local server by entering `python -m SimpleHTTPServer 8000 &`. Next, in a web browser go to <a href="http://localhost:8000/springViewer.html?datasets/frog_matlab">http://localhost:8000/springViewer.html?datasets/frog_matlab</a>
+After running this code, start a local server by entering `python -m SimpleHTTPServer 8000 &`. Then, in a web browser go to <a href="http://localhost:8000/springViewer.html?datasets/frog_matlab">http://localhost:8000/springViewer.html?datasets/frog_matlab</a>
 
 <a name="Visualizing"/>
 ## Visualizing your data ##
