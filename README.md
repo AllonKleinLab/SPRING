@@ -108,8 +108,8 @@ Instructions for launching the web interface given output of the pre-processing 
 
 <a name="Visualizing"/>
 ## Visualizing your data ##
-
-1. Open a terminal to the SPRING directory. Create a project directory for your data if you have not done so. 
+0. At this point, it is assumed that you have already created a project directory using the pre-processing scripts. 
+1. Open a terminal to the SPRING directory. 
 2. Start a local server by entering  `python -m SimpleHTTPServer 8000 &`
 3. Go to the following URL, which must be modified with the name of your project <a href="">http://localhost:8000/springViewer.html?PATH_TO_YOUR_PROJECT_DIRECTORY</a>.
        
