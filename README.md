@@ -25,7 +25,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 ## Installation ##
 
 1. Download the SPRING repo: go to the green "Clone or download" button on this page
-2. Alternatively: Make sure git is installed and in the terminal enter `git clone https://git@github.com/AllonKleinLab/SPRING.git`
+2. Alternatively: Make sure git is installed and in the terminal enter <br> `git clone https://git@github.com/AllonKleinLab/SPRING.git`
 3. If following option (2) above, you may need to change permissions using `sudo chmod -R a+w SPRING`
 
 <a name="Quick_Start1"/>
