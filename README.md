@@ -49,7 +49,7 @@ _To load your own data into SPRING, the data must saved to a project directory a
             import pickle, numpy as np
 
             # Import SPRING helper functions
-            from preprocesing_python import *
+            from preprocessing_python import *
 
             # Import expression matrix; rows are cells and columns are genes
             ### ****** Make sure E.npy is unzipped *************
