@@ -167,6 +167,6 @@ Json file containing cell groupings, i.e. categorical variables such as sample I
 The "label_list" array should contain one string for each cell. The "label_colors" map should have one name-color pair for each distinct cell label in "label_list".                               
 
 
-5. **color_data_gene_sets.csv [OPTIONAL]** <br>' 
-This csv file stores continuous variables for coloring the data, such as signature scores or cell pseudotime. Each line of the file corresponds to one coloring track, whith the name of the track followed by a sequence of values: `TRACK_NAME,cell1_value,cell2_value...`. For example, `Cell_cycle_score,0.3,0.54,0.2... `. So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header. 
+5. **color_data_gene_sets.csv [OPTIONAL]** <br>
+This csv file stores continuous variables for coloring the data, such as signature scores or cell pseudotime. Each line of the file corresponds to one coloring track, whith the name of the track followed by a sequence of values: `TRACK_NAME,cell1_value,cell2_value...`. For example, `Cell_cycle_score,0.3,0.54,0.2... ` So if the dataset has `n` cells, this file should contain `n+1` columns. NOTE: Make sure that the file has no header. 
 
