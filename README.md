@@ -25,7 +25,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 ## Installation ##
 
 1. Download the SPRING repo: go to the green "Clone or download" button on this page
-2. Alternatively: Install git and in the terminal by entering `git clone https://git@github.com/AllonKleinLab/SPRING.git`
+2. Alternatively: Make sure git is installed and in the terminal enter `git clone https://git@github.com/AllonKleinLab/SPRING.git`
 3. If following option (2) above, you may need to change permissions using `sudo chmod -R a+w SPRING`
 
 <a name="Quick_Start1"/>
@@ -33,7 +33,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 <a name="Quick_Start3"/>
 ## Quick Start ##
 
-#### Explore a pre-processed dataset ####
+#### Explore pre-processed dataset using a local webserver ####
 
 1. Go into the SPRING directory by entering `cd SPRING`
 2. Start a local server by entering `python -m SimpleHTTPServer 8000 &`
@@ -41,7 +41,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 
 #### Process your own dataset ####
 
-_To load your own data into SPRING, they must saved to a project directory with stereotyped names and formats. We provide [preprocesing scripts](#Preprocessing3) in python and MATLAB that construct the project directory from easy inputs such as an expression matrix and a distance matrix. Sample code below uses the python preprocessing scripts to construct a project directory `datasets/frog/` from python datastructures._ 
+_To load your own data into SPRING, the data must saved to a project directory as files with stereotyped names and formats. We provide [preprocesing scripts](#Preprocessing3) in python and MATLAB that construct the project directory from easy inputs such as an expression matrix and a distance matrix. Sample code below uses the python preprocessing scripts to construct a project directory `datasets/frog/` from python datastructures._ 
 
 1. Unzip `example_inputs/E.npy.zip`
 2. In the SPRING directory, run the following python code.
