@@ -30,6 +30,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 
 <a name="Quick_Start1"/>
 <a name="Quick_Start2"/>
+<a name="Quick_Start3"/>
 ## Quick Start ##
 
 #### Explore a pre-processed dataset ####
@@ -98,6 +99,54 @@ _To load your own data into SPRING, they must saved to a project directory with 
 We provide pre-processing scripts in python and MATLAB that help process basic inputs into the [special files](#File_structures3) that are read by SPRING. The main function, `save_spring_dir` actually writes the project directory, taking an expression matrix and pairwaise distance matrix as inputs. The remaining functions implement basic filtering and normaization routines to produce the distance matrix. 
 
 ### Python functions ###
+
+A full example running python pre-processing functions on example inputs is provided in the [Quick Start](#Quick_Start3) section. Documentation for these functions is provided below. 
+
+            Documentation
+
+            Documentuonat
+
+### MATLAB functions ###
+
+The following code snippet will create a project directory of sample inputs. To run the code, open MATLAB and go to the directory `SPRING/preprocessing_matlab/`
+
+            % Load example impit data
+            % This loads [E, gene_list, custom_colors, cell_groupings]
+            load('../example_inputs/matlab_data.m','-mat');
+
+            % Make sure all genes can be used as fields in a struct
+            % Make sure all cell groupings can be used as fields in a struct
+            % Make sure all custom color names can be used as fields in a struct
+            % That means they cannot begin with a digit or contain "-", ".", " ", or "/"
+            gene_list      = struct_field_qualified(gene_list);
+            cell_groupings = struct_field_qualified(cell_groupings);
+            custom_colors  = struct_field_qualified(custom_colors);
+
+            % Filter out cells with fewer than 1000 UMIs
+            disp('Filtering cells');
+            [E,cell_filter] = filter_cells(E,1000);
+
+            % Normalize gene expression data
+            disp('Row-normalizing');
+            E = row_normalize(E);
+
+            % Filter genes with mean expression < 0.1 and fano factor < 3
+            disp('Filtering genes');
+            [~,gene_filter] = filter_genes(E,0.1,3);
+
+            % Z-score the gene-filtered expression matrix and do PCA with 20 pcs
+            disp('Zscoring and PCA');
+            [coeff,score,latent] = pca(zscore(E(:,gene_filter)));
+            Epca = score(:,1:20); 
+
+            % get euclidean distances in the PC space
+            disp('Getting distance matrix');
+            D = pdist2(Epca,Epca);
+
+            % save a SPRING plots with k=5 edges per node in the directory "../datasets/frog/"
+            disp('Saving SPRING plot');
+            save_spring_dir(E,D,5,gene_list,'../datasets/frog2', 'cell_groupings',cell_groupings,'custom_colors',custom_colors);
+
 
 
 <a name="Visualizing"/>
