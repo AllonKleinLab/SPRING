@@ -119,7 +119,7 @@ The following code snippet will begin with basic MATLAB data structures and use 
             % "cell groupings" cell array with one row for each cell grouping. The first entry in each row is the name of the
             %                  of the grouping (e.g. "sampleID") and each subsequet entry is a cell label (e.g. "sample_1").
             %                  If there are T different groupungs and N cells, then this should be a T x (N+1) cell array. 
-            load('../example_inputs/matlab_data.m','-mat');
+            load('../example_inputs/matlab_data.mat','-mat');
 
             % Make sure all genes, cell groupings and custom color names can be used as fields in a struct
             % That means they cannot begin with a digit or contain "-", ".", " ", or "/"
