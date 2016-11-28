@@ -103,7 +103,7 @@ We provide pre-processing scripts in python and MATLAB that help process basic i
 
 A full example running python pre-processing functions on example inputs is provided in the [Quick Start](#Quick_Start3) section.
 
-### MATLAB preprocessing sample script ###
+### MATLAB preprocessing ###
 
 The following code snippet will begin with basic MATLAB data structures and use them create the project directory `datasets/frog/`. To run the code, open MATLAB and go to the directory `SPRING/preprocessing_matlab/`
 
@@ -150,69 +150,6 @@ The following code snippet will begin with basic MATLAB data structures and use 
             % save a SPRING plots with k=5 edges per node in the directory "../datasets/frog/"
             disp('Saving SPRING plot');
             save_spring_dir(E,D,5,gene_list,'../datasets/frog2', 'cell_groupings',cell_groupings,'custom_colors',custom_colors);
-
-### MATLAB preprocessing function documentation ###
-
-            function save_spring_dir(E,D,k,gene_list,project_directory, varargin)
-            % Create a SPRING project directory and write files to be loaded by SPRING
-            % 
-            % Required inputs
-            %   E                  = Matrix of gene expression. Rows correspond to
-            %                        cells and columns correspond to genes. 
-            %   D                  = Distance matrix for construction of knn graph.
-            %                        Any distance matrix can be used as long as higher
-            %                        values correspond to greater distances.
-            %   k                  = Number of edges assigned to each node in knn graph
-            %   gene_list          = An ordered cell array of gene names. The cell 
-            %                        array should have length size(E,2)
-            %   project_directory  = Path to a directory where SPRING readable files
-            %                        will be written. The directory does not have to 
-            %                        exist before running this function.
-            % Optional inputs
-            %   "custom_colors"    = cell array with one row for each custom color 
-            %                        track. The first entry in each row is the color 
-            %                        tracks and N cells, this should be a T x (N+1) 
-            %                        cell array. 
-            %   "cell groupings"   = cell array with one row for each cell grouping. 
-            %                        The first entry in each row is the name of the
-            %                        of the grouping (e.g. "sampleID") and each 
-            %                        subsequet entry is a cell label (e.g. "sample_1").
-            %                        If there are T different groupungs and N cells, 
-            %                        then this should be a T x (N+1) cell array. 
-                   
-            function Enormalized = row_normalize(E)
-            % Row normalize the expression matrix. Only use genes that make up <5% of
-            % total reads. 
-            %
-            % Inputs
-            %   E           = Expression matrix (rows are cells, columns are genes)
-            % 
-            % Outputs
-            %   Enormalized = Row normalized expression matrix
-            
-            function [Efiltered, gene_filter] = filter_genes(E, Ecutoff, Vcutoff)
-            % Filter genes based on expression level and variability. Only include
-            % genes with mean > Ecutoff and fano factor > Vcutoff
-            %
-            % Inputs
-            %   E           = Expression matrix. Rows are cells and columns are genes.
-            %   Ecutoff     = Minimum mean expression
-            %   Vcutoff     = Minimum fano factor
-            % 
-            % Outputs
-            %   Efiltered   = Gene-filtered expression matrix
-            %   gene_filter = Boolean array for filtering genes
-            
-            function [Efiltered,cell_filter] = filter_cells(E,min_reads)
-            % Filter out cells < min_reads UMIs
-            %
-            % Inputs
-            %   E           = Expression matrix. Rows are cells and columns are genes.
-            %   min_reads   = Minimum number of UMIs to keep a cell
-            % 
-            % Outputs
-            %   Efiltered   = Cell-filtered expression matrix
-            %   cell_filter = Boolean array for filtering cells
 
 <a name="Visualizing"/>
 ## Visualizing your data ##
