@@ -61,6 +61,7 @@ _To load your own data into SPRING, the data must saved to a project directory a
             E,cell_filter = filter_cells(E,1000)
 
             # Normalize gene expression data
+            # Only use genes that make up <
             print 'Row-normalizing'
             E = row_normalize(E)
 
@@ -96,29 +97,29 @@ _To load your own data into SPRING, the data must saved to a project directory a
 <a name="Preprocessing4"/>
 ## Pre-processing your data ##
 
-We provide pre-processing scripts in python and MATLAB that help process basic inputs into the [special files](#File_structures3) that are read by SPRING. The main function, `save_spring_dir` actually writes the project directory, taking an expression matrix and pairwaise distance matrix as inputs. The remaining functions implement basic filtering and normaization routines to produce the distance matrix. 
+We provide pre-processing scripts in python and MATLAB that help process basic inputs into the [special files](#File_structures3) that are read by SPRING. The main function, `save_spring_dir` actually writes the project directory, taking an expression matrix and pairwaise distance matrix as inputs. The remaining functions implement basic filtering and normaization routines to produce the required distance matrix. 
 
 ### Python preprocessing ###
 
-A full example running python pre-processing functions on example inputs is provided in the [Quick Start](#Quick_Start3) section. Documentation for these functions is provided below. 
-
-#### Python function documentation ####
-
-            Documentation
-
-            Documentuonat
+A full example running python pre-processing functions on example inputs is provided in the [Quick Start](#Quick_Start3) section.
 
 ### MATLAB preprocessing ###
 
-The following code snippet will create a project directory of sample inputs. To run the code, open MATLAB and go to the directory `SPRING/preprocessing_matlab/`
+The following code snippet will begin with basic MATLAB data structures and use them create the project directory `datasets/frog/`. To run the code, open MATLAB and go to the directory `SPRING/preprocessing_matlab/`
 
             % Load example impit data
             % This loads [E, gene_list, custom_colors, cell_groupings]
+            % "E"              array of gene expression values (each row corresponds to a cell and each column to a gene)
+            % "gene_list"      cell array of gene names with length size(E,2)
+            % "custom_colors"  cell array with one row for each custom color track. The first entry in each row is the 
+            %                  name of the track and subsequent entries are values for each cell. So if there are T custom 
+            %                  color tracks and N cells, this should be a T x (N+1) cell array. 
+            % "cell groupings" cell array with one row for each cell grouping. The first entry in each row is the name of the
+            %                  of the grouping (e.g. "sampleID") and each subsequet entry is a cell label (e.g. "sample_1").
+            %                  If there are T different groupungs and N cells, then this should be a T x (N+1) cell array. 
             load('../example_inputs/matlab_data.m','-mat');
 
-            % Make sure all genes can be used as fields in a struct
-            % Make sure all cell groupings can be used as fields in a struct
-            % Make sure all custom color names can be used as fields in a struct
+            % Make sure all genes, cell groupings and custom color names can be used as fields in a struct
             % That means they cannot begin with a digit or contain "-", ".", " ", or "/"
             gene_list      = struct_field_qualified(gene_list);
             cell_groupings = struct_field_qualified(cell_groupings);
@@ -129,6 +130,7 @@ The following code snippet will create a project directory of sample inputs. To 
             [E,cell_filter] = filter_cells(E,1000);
 
             % Normalize gene expression data
+            % Only use genes making up <5% of total UMIs
             disp('Row-normalizing');
             E = row_normalize(E);
 
@@ -148,21 +150,6 @@ The following code snippet will create a project directory of sample inputs. To 
             % save a SPRING plots with k=5 edges per node in the directory "../datasets/frog/"
             disp('Saving SPRING plot');
             save_spring_dir(E,D,5,gene_list,'../datasets/frog2', 'cell_groupings',cell_groupings,'custom_colors',custom_colors);
-
-#### MATLAB function documentation ####
-
-            % Load example impit data
-            % This loads [E, gene_list, custom_colors, cell_groupings]
-            load('../example_inputs/matlab_data.m','-mat');
-
-            % Make sure all genes can be used as fields in a struct
-            % Make sure all cell groupings can be used as fields in a struct
-            % Make sure all custom color names can be used as fields in a struct
-            % That means they cannot begin with a digit or contain "-", ".", " ", or "/"
-            gene_list      = struct_field_qualified(gene_list);
-            cell_groupings = struct_field_qualified(cell_groupings);
-            custom_colors  = struct_field_qualified(custom_colors);
-
 
 <a name="Visualizing"/>
 ## Visualizing your data ##
