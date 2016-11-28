@@ -77,10 +77,12 @@ _To load your own data into SPRING, the data must saved to a project directory a
             print 'Getting distance matrix'
             D = get_distance_matrix(Epca)
 
-            # load additional data
+            # load additional data (gene_list, cell_groupings, custom_colors)
             # gene_list is a list of genes with length E.shape[1]
             # cell_groupings is a dict of the form: { <grouping_name> : [<cell1_label>, <cell2_label>,...] }
             # a "grouping" could be the sample id, cluster label, or any other categorical variable
+            # custom_colors is a dict of the form { <color_track_name> : [<cell1_value>, <cell2_value>,...] }
+            # a "custom color" is any continuous variable that you would like to use for coloring cels. 
             gene_list, cell_groupings, custom_colors = pickle.load(open('example_inputs/python_data.p'))
 
             # save a SPRING plots with k=5 edges per node in the directory "datasets/frog/"
