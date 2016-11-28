@@ -1,8 +1,13 @@
 function Enormalized = row_normalize(E)
-% Row normalize the expression matrix
+% Row normalize the expression matrix. Only use genes that make up <5% of
+% total reads. 
 %
-% E           = Expression matrix (rows are cells, columns are genes)
-% Enormalized = Row normalized expression matrix
+% Inputs
+%   E           = Expression matrix (rows are cells, columns are genes)
+% 
+% Outputs
+%   Enormalized = Row normalized expression matrix
+%
 %%
 	total_counts = sum(E,2);
 	tc_tiled = repmat(total_counts,1,size(E,2));

@@ -1,10 +1,13 @@
 function [Efiltered,cell_filter] = filter_cells(E,min_reads)
 % Filter out cells < min_reads UMIs
 %
-% E           = Expression matrix. Rows are cells and columns are genes.
-% min_reads   = Minimum number of UMIs to keep a cell
-% Efiltered   = Cell-filtered expression matrix
-% cell_filter = Boolean array for filtering cells
+% Inputs
+%   E           = Expression matrix. Rows are cells and columns are genes.
+%   min_reads   = Minimum number of UMIs to keep a cell
+% 
+% Outputs
+%   Efiltered   = Cell-filtered expression matrix
+%   cell_filter = Boolean array for filtering cells
 %
 %%
     total_counts = sum(E,2);

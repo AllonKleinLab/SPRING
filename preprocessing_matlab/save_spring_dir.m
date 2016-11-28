@@ -1,13 +1,29 @@
 function save_spring_dir(E,D,k,gene_list,project_directory, varargin)
 % Create a SPRING project directory and write files to be loaded by SPRING
 % 
-% write_color_tracks(ctracks, fname)
-%
-% ctracks  = Cell array. Each row is a color track. The first entry in the
-%            row is the name of the track and subsequent entries give 
-%            specific color values. If there are N cells, then this cell
-%            array should have N+1 columns. 
-% fname    = Path to save the color tracks file. 
+% Required inputs
+%   E                  = Matrix of gene expression. Rows correspond to
+%                        cells and columns correspond to genes. 
+%   D                  = Distance matrix for construction of knn graph.
+%                        Any distance matrix can be used as long as higher
+%                        values correspond to greater distances.
+%   k                  = Number of edges assigned to each node in knn graph
+%   gene_list          = An ordered cell array of gene names. The cell 
+%                        array should have length size(E,2)
+%   project_directory  = Path to a directory where SPRING readable files
+%                        will be written. The directory does not have to 
+%                        exist before running this function.
+% Optional inputs
+%   "custom_colors"    = cell array with one row for each custom color 
+%                        track. The first entry in each row is the color 
+%                        tracks and N cells, this should be a T x (N+1) 
+%                        cell array. 
+%   "cell groupings"   = cell array with one row for each cell grouping. 
+%                        The first entry in each row is the name of the
+%                        of the grouping (e.g. "sampleID") and each 
+%                        subsequet entry is a cell label (e.g. "sample_1").
+%                        If there are T different groupungs and N cells, 
+%                        then this should be a T x (N+1) cell array. 
 %
 %%
     cell_groupings = cell(0);
