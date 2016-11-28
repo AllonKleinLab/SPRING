@@ -151,7 +151,7 @@ The following code snippet will begin with basic MATLAB data structures and use 
 
             % save a SPRING plots with k=5 edges per node in the directory "../datasets/frog/"
             disp('Saving SPRING plot');
-            save_spring_dir(E,D,5,gene_list,'../datasets/frog2', 'cell_groupings',cell_groupings,'custom_colors',custom_colors);
+            save_spring_dir(E,D,5,gene_list,'../datasets/frog_matlab', 'cell_groupings',cell_groupings,'custom_colors',custom_colors);
 
 <a name="Visualizing"/>
 ## Visualizing your data ##
