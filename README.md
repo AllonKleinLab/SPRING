@@ -41,7 +41,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 
 #### Process your own dataset ####
 
-_To load your own data into SPRING, the data must be saved to a project directory as files with stereotyped names and formats. We provide [preprocesing scripts](#Preprocessing3) in python and MATLAB that construct the project directory from easy inputs such as an expression matrix and a distance matrix. Sample code below uses the python preprocessing scripts to construct a project directory `datasets/frog/` from python datastructures._ 
+_To load your own data into SPRING, the data must be saved in a project directory as files with stereotyped names and formats. We provide [preprocesing scripts](#Preprocessing3) in python and MATLAB that construct the project directory from easy inputs such as an expression matrix and a distance matrix. Sample code below uses the python preprocessing scripts to construct the project directory `datasets/frog/` from python datastructures._ 
 
 1. Unzip `example_inputs/E.npy.zip`
 2. In the SPRING directory, run the following python code.
