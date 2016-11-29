@@ -85,7 +85,7 @@ _To load your own data into SPRING, the data must be saved in a project director
             # a "custom color" is any continuous variable that you would like to use for coloring cels. 
             gene_list, cell_groupings, custom_colors = pickle.load(open('example_inputs/python_data.p'))
 
-            # save a SPRING plots with k=5 edges per node in the directory "datasets/frog/"
+            # save a SPRING plots with k=5 edges per node in the directory "datasets/frog_python/"
             print 'Saving SPRING plot'
             save_spring_dir(E,D,5,gene_list,'datasets/frog_python', cell_groupings=cell_groupings, custom_colors=custom_colors)
 
@@ -149,7 +149,7 @@ The following code snippet will begin with basic MATLAB data structures and use 
             disp('Getting distance matrix');
             D = pdist2(Epca,Epca);
 
-            % save a SPRING plot with k=5 edges per node in the directory "../datasets/frog/"
+            % save a SPRING plot with k=5 edges per node in the directory "../datasets/frog_matlab/"
             disp('Saving SPRING plot');
             save_spring_dir(E,D,5,gene_list,'../datasets/frog_matlab', 'cell_groupings',cell_groupings,'custom_colors',custom_colors);
 
