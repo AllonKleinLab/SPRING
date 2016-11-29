@@ -403,10 +403,13 @@ function downloadPDF() {
 
 
 function showDownloadDropdown() {
+	console.log('here');
 	if (d3.select("#download_dropdown").style("height") == 'auto') {
 		closeDropdown();
 		collapse_settings();
-		document.getElementById("download_dropdown").classList.toggle("show");
+		setTimeout(function() {
+			document.getElementById("download_dropdown").classList.toggle("show"); 
+		}, 10);
 	}
 }
 
@@ -414,7 +417,9 @@ function showLayoutDropdown() {
 	if (d3.select("#layout_dropdown").style("height") == 'auto') {
 		closeDropdown();
 		collapse_settings();
-		document.getElementById("layout_dropdown").classList.toggle("show");
+		setTimeout(function() {
+			document.getElementById("layout_dropdown").classList.toggle("show");
+		}, 10);
 	}
 }
 
