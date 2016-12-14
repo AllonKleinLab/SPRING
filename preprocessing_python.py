@@ -191,7 +191,7 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 	for j in range(50):	
 		fname = project_directory+'/gene_colors/color_data_all_genes-'+repr(j)+'.csv'
 		if len(use_genes) > 0: all_gene_colors = {g : E[:,i+II*j] for i,g in enumerate(gene_list[II*j:II*(j+1)]) if g in use_genes}
-		else: all_gene_colors = {g : E[:,i+II*j] for i,g in enumerate(gene_list[II*j:II*(j+1)]) if E[:,i+II*j]>0.05}
+		else: all_gene_colors = {g : E[:,i+II*j] for i,g in enumerate(gene_list[II*j:II*(j+1)]) if np.mean(E[:,i+II*j])>0.05}
 		write_color_tracks(all_gene_colors, fname)
 		all += all_gene_colors.keys()
 	
