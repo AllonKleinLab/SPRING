@@ -96,7 +96,7 @@ def filter_genes(E, Ecutoff, Vcutoff):
 	'''
 	mean_filter = np.mean(E,axis=0)> Ecutoff
 	var_filter = np.var(E,axis=0) / (np.mean(E,axis=0)+.0001) > Vcutoff
-	gene_filter = np.nonzero(np.all([mean_filter,var_filter],axis=0))[0]
+	gene_filter = np.all([mean_filter,var_filter],axis=0)
 	return E[:,gene_filter], gene_filter
 
 #========================================================================================#	
