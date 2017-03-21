@@ -199,10 +199,10 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 	#print 'Color stats'
 	color_stats = {}
 	for i in range(E.shape[1]):
-		mean = np.mean(E[:,i])
-		std = np.std(E[:,i])
-		max = np.max(E[:,i])
-		centile = np.percentile(E[:,i],99.6)
+		mean = float(np.mean(E[:,i]))
+		std = float(np.std(E[:,i]))
+		max = float(np.max(E[:,i]))
+		centile = float(np.percentile(E[:,i],99.6))
 		color_stats[gene_list[i]] = (mean,std,0,max,centile)
 	for k,v in custom_colors.items():
 		color_stats[k] = (0,1,np.min(v),np.max(v)+.01,np.percentile(v,99))
