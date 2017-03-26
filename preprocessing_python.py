@@ -213,6 +213,7 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 	#print 'Saving categorical color data'
 	categorical_coloring_data = {}
 	for k,labels in cell_groupings.items():
+		labels = [(l if type(l)==str else repr(l)) for l in labels]
 		label_colors = {l:frac_to_hex(float(i)/len(set(labels))) for i,l in enumerate(list(set(labels)))}
 		categorical_coloring_data[k] = {'label_colors':label_colors, 'label_list':labels}
 	json.dump(categorical_coloring_data,open(project_directory+'/categorical_coloring_data.json','w'),indent=4)
