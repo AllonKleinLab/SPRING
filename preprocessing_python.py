@@ -172,6 +172,10 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 							 should have N entries. 	
 	##############################################
 	'''
+	# Convert arry data types
+	E = np.array(E.tolist()) 
+	D = np.array(D.tolist()) 
+	
 	os.system('mkdir '+project_directory)
 	if not project_directory[-1] == '/': project_directory += '/'
 	# Build graph
