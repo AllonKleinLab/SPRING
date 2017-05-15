@@ -909,8 +909,8 @@ function colorBar(project_directory) {
 		d3.selectAll(".legend_row")
 			.style("width","152px")	
 			.style("background-color","rgba(0, 0, 0, 0)")
-			.on("mouseover", function(d) { d3.select(this).style("background-color","rgba(0, 0, 0, 0.3)");})
-			.on("mouseout", function(d) { d3.select(this).style("background-color","rgba(0, 0, 0, 0)");})
+			//.on("mouseover", function(d) { d3.select(this).style("background-color","rgba(0, 0, 0, 0.3)");})
+			//.on("mouseout", function(d) { d3.select(this).style("background-color","rgba(0, 0, 0, 0)");})
 			.on("click", function(d) { 
 				var my_cells = d3.selectAll(".node circle").filter(function(dd) { return cat_label_list[dd.number]==d; }) // classed("selected", function(dd) {  
 				any_selected = false; my_cells.each(function(d) { if (d.selected) { any_selected = true; } });
