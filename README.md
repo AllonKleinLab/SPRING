@@ -10,6 +10,7 @@
 
 
 <a name="Overview"/>
+
 ### Overview ###
 
 SPRING is a collection of pre-processing scripts and a web browser-based tool for visualizing and interacting with high dimensional data. View an example dataset <a href=https://kleintools.hms.harvard.edu/tools/springViewer.html?cgi-bin/client_datasets/centroids>here</a>. SPRING was developed for single cell RNA-Seq data but can be applied more generally. The minimal input is a matrix of high dimensional data points (cells) and a list of dimension names (genes). Casual users are encouraged to access our user-friendly <a href="https://kleintools.hms.harvard.edu/tools/spring.html">webserver</a>. Heavy users and those wanting more control over the data processing pipeline may use the local installation (i.e. this github repo). A full python example showing how to process your own data and boot up a local server is provided in the [Quick Start](#Quick_Start2) section. 
@@ -22,6 +23,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 
 
 <a name="Installation"/>
+
 ## Installation ##
 
 1. Download the SPRING repo: go to the green "Clone or download" button on this page
@@ -32,7 +34,7 @@ The SPRING subroutines can be divided into (a) pre-processing scripts that take 
 <a name="Quick_Start2"/>
 <a name="Quick_Start3"/>
 
-#### Quick Start ####
+## Quick Start ##
 
 #### Explore pre-processed dataset using a local webserver ####
 
@@ -98,6 +100,7 @@ _To load your own data into SPRING, the data must be saved in a project director
 <a name="Preprocessing2"/>
 <a name="Preprocessing3"/>
 <a name="Preprocessing4"/>
+
 ## Pre-processing your data ##
 
 We provide pre-processing scripts in python and MATLAB that help process basic inputs into the [special files](#File_structures3) that are read by SPRING. The main function, `save_spring_dir` actually writes the project directory, taking an expression matrix and pairwaise distance matrix as inputs. The remaining functions implement basic filtering and normaization routines to produce the required distance matrix. 
@@ -157,7 +160,9 @@ The following code snippet will begin with basic MATLAB data structures and use 
 After running this code, start a local server by entering `python -m SimpleHTTPServer 8000 &`. Then, in a web browser go to <a href="http://localhost:8000/springViewer.html?datasets/frog_matlab">http://localhost:8000/springViewer.html?datasets/frog_matlab</a>
 
 <a name="Visualizing"/>
+
 ## Visualizing your data ##
+
 0. At this point, it is assumed that you have already created a project directory using the pre-processing [scripts](#Preprocessing4). 
 1. Open a terminal to the SPRING directory. 
 2. Start a local server by entering  `python -m SimpleHTTPServer 8000 &`
@@ -169,6 +174,7 @@ After running this code, start a local server by entering `python -m SimpleHTTPS
 <a name="File_structures1"/>
 <a name="File_structures2"/>
 <a name="File_structures3"/>
+
 ## SPRING file structures ##
 
 The SPRING project directory must contain files with stereotyped names and formats. Matlab and Python [scripts](#Preprocessing3) are provided to create these files. Here is a guide to the file names and formats:
