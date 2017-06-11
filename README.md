@@ -10,7 +10,7 @@
 
 
 <a name="Overview"/>
-## Overview ##
+### Overview ###
 
 SPRING is a collection of pre-processing scripts and a web browser-based tool for visualizing and interacting with high dimensional data. View an example dataset <a href=https://kleintools.hms.harvard.edu/tools/springViewer.html?cgi-bin/client_datasets/centroids>here</a>. SPRING was developed for single cell RNA-Seq data but can be applied more generally. The minimal input is a matrix of high dimensional data points (cells) and a list of dimension names (genes). Casual users are encouraged to access our user-friendly <a href="https://kleintools.hms.harvard.edu/tools/spring.html">webserver</a>. Heavy users and those wanting more control over the data processing pipeline may use the local installation (i.e. this github repo). A full python example showing how to process your own data and boot up a local server is provided in the [Quick Start](#Quick_Start2) section. 
 
