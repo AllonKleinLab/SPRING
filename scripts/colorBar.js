@@ -881,7 +881,7 @@ function colorBar(project_directory) {
 				.style("height","25px")
 				.style("margin-top","0px")
 				.style("width","40px")
-				.style("overflow","scroll")
+				.style("overflow","hidden")
 				.style("background-color","rgba(0,0,0,0)")
 				.append("p").text("");
 			
@@ -891,8 +891,7 @@ function colorBar(project_directory) {
 				.attr("class","legend_row")
 				.style("height","25px")
 				.style("margin-top","0px")
-				.style("width","152px")
-				.style("overflow","scroll");
+				.style("width","152px");
 
 		d3.select("#label_column").selectAll("div").each(function(d) {
 			d3.select(this).append("div")
