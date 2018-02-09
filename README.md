@@ -89,9 +89,9 @@ _To load your own data into SPRING, the data must be saved in a project director
             gene_list, cell_groupings, custom_colors = pickle.load(open('example_inputs/python_data.p'))
 
             # save a SPRING plots with k=5 edges per node in the directory "datasets/frog_python/"
-            # coarse graining can also be performed using the optional coarse_graining parameter
+            # coarse graining can also be performed using the optional coarse_grain_X parameter
             print 'Saving SPRING plot'
-            save_spring_dir(E,D,5,gene_list,'datasets/frog_python', cell_groupings=cell_groupings, custom_colors=custom_colors)
+            save_spring_dir(E,D,5,gene_list,'datasets/frog_python', cell_groupings=cell_groupings, custom_colors=custom_colors, coarse_grain_X=1)
 
 3. If you haven't already, start a local server by entering `python -m SimpleHTTPServer 8000 &`
 4. In a web browser, go to <a href="http://localhost:8000/springViewer.html?datasets/frog_python">http://localhost:8000/springViewer.html?datasets/frog_python</a>.
