@@ -142,7 +142,7 @@ def get_PCA(E,numpc):
 
 
 #========================================================================================#
-def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_groupings={}, use_genes=[]):
+def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_groupings={}, use_genes=[], coarse_grain_X=1):
 	''' 
 	##############################################
 	Builds a SPRING project directory and transforms data into SPRING-readable formats
@@ -159,7 +159,7 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 							 written. The directory does not have to exist before running 
 							 this function.
 	
-	Input (Optional)
+		Input (Optional)
 		cell_groupings     = Dictionary with one key-value pair for each cell grouping. 
 							 The key is the name of the grouping (e.g. "SampleID") and 
 							 the value is a list of labels (e.g. ["sample1","sample2"...])
@@ -170,6 +170,9 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 							 list of scalar values (i.e. color intensities). If there are 
 							 N cells total (i.e. E.shape[0] == N), then the list of labels 
 							 should have N entries. 	
+		coarse_grain_X	   = The fold-change reduction in nodes to achieve through graph
+							 coarse graining. If 1, then no coarse graining will be 
+							 performed
 	##############################################
 	'''
 	# Convert arry data types
@@ -181,7 +184,12 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 	# Build graph
 	#print 'Building graph'
 	edges = get_knn_edges(D,k)
+	
 
+	# Coarse grain 
+	if coarse_grain_X < 1:
+		edges,E,custom_colors,cell_groupings = coarse_grain(edges,E,k,custom_colors,cell_groupings,coarse_grain_X)
+	
 	# save genesets
 	#print 'Saving gene sets'
 	custom_colors['Uniform'] = np.zeros(E.shape[0])
@@ -228,6 +236,54 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 	edges = [{'source':i, 'target':j, 'distance':0} for i,j in edges]
 	out = {'nodes':nodes,'links':edges}
 	open(project_directory+'graph_data.json','w').write(json.dumps(out,indent=4, separators=(',', ': ')))
+
+#========================================================================================#
+def coarse_grain(edges,E,k,custom_colors,cell_groupings,coarse_grain_X):
+	# make a list of base nodes, give each one a unique index
+	# make -1 be a special index that means "unassigned"
+	# loop through edges, each one member has a label but the other does not, propogate
+	# repeat until all nodes are assigned
+	N = len(E)
+	node_index = np.ones(N) * -1
+	base_filter = np.random.uniform(0,1,len(node_index)) < coarse_grain_X
+	node_index[base_filter] = np.arange(np.sum(base_filter))
+	
+	for count,(i,j) in enumerate(edges):
+		if node_index[i] != -1 and node_index[j] == -1:
+			node_index[j] = node_index[i]
+		if node_index[j] != -1 and node_index[i] == -1:
+			node_index[i] = node_index[j]	
+
+	# now make a new list of edges and color vector and coordinates
+	new_E = []
+	new_custom_colors = {k:[] for k in custom_colors}
+	new_cell_groupings = {k:[] for k in cell_groupings}
+	for i in range(np.sum(base_filter)):
+		new_E.append(np.mean(E[node_index==i,:],axis=0))
+		for k in new_custom_colors:
+			new_custom_colors[k].append(np.mean(np.array(custom_colors[k])[node_index==i]))
+		for k in new_cell_groupings:
+			new_cell_groupings[k].append(most_common([cell_groupings[k][ii] for ii in np.nonzero(node_index==i)[0]]))
+	new_E = np.array(new_E)
+	
+	new_edges = {}
+	for i,j in edges:
+		ne = tuple(sorted([node_index[i],node_index[j]]))
+		if not ne in new_edges: new_edges[ne] = 0.
+		new_edges[ne] += 1.
+	edge_weights = [v for k,v in new_edges.items()]
+	cutoff = np.percentile(edge_weights,100./len(edge_weights)*coarse_grain_X*len(edges)*1.5)
+	new_edges = [e for e,v in new_edges.items() if v >= cutoff]
+	
+	return new_edges,new_E,new_custom_colors,new_cell_groupings
+
+#========================================================================================#
+def most_common(names):
+	counts = {n:0 for n in names}
+	for n in names: counts[n] += 1
+	highest = np.max([v for k,v in counts.items()])
+	for k,v in counts.items():
+		if v==highest: return k
 
 #========================================================================================#
 def row_sum_normalize(A):
