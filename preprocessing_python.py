@@ -179,7 +179,8 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 	E = np.array(E.tolist()) 
 	D = np.array(D.tolist()) 
 	
-	os.system('mkdir '+project_directory)
+	if not os.path.exists(project_directory):
+		os.system.makedirs(project_directory)
 	if not project_directory[-1] == '/': project_directory += '/'
 	# Build graph
 	#print 'Building graph'
@@ -197,8 +198,9 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 	all = []
 	
 	# save gene colortracks
-	#print 'Savng coloring tracks'
-	os.system('mkdir '+project_directory+'gene_colors')
+	#print 'Saving coloring tracks'
+	if not os.path.exists(project_directory+'gene_colors'):
+		os.makedirs(project_directory+'gene_colors')
 	II = len(gene_list) / 50 + 1
 	for j in range(50):	
 		fname = project_directory+'/gene_colors/color_data_all_genes-'+repr(j)+'.csv'
