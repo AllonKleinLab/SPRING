@@ -180,7 +180,7 @@ def save_spring_dir(E,D,k,gene_list,project_directory, custom_colors={},cell_gro
 	D = np.array(D.tolist()) 
 	
 	if not os.path.exists(project_directory):
-		os.system.makedirs(project_directory)
+		os.makedirs(project_directory)
 	if not project_directory[-1] == '/': project_directory += '/'
 	# Build graph
 	#print 'Building graph'
