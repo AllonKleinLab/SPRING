@@ -1,6 +1,6 @@
 # SPRING
 
-## *NOTE: This version of SPRING is being phased out. The new version is available at https://github.com/AllonKleinLab/SPRING_dev*
+### *NOTE: This version of SPRING is being phased out. The new version is available at https://github.com/AllonKleinLab/SPRING_dev*
 
 #### Table of Contents  
 [Overview](#Overview)  
